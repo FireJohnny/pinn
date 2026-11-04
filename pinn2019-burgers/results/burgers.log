@@ -1,0 +1,29 @@
+① 生成高精度真值(半隐式有限差分)
+  网格 1001×1001 | 耗时 1.2s | max|u| = 1.000
+
+② 正问题:PINN vs 有限差分
+  ep    0 loss 5.12e+01 pde 1.57e-03 | 0s
+  ep 1000 loss 5.45e-01 pde 5.02e-01 | 153s
+  ep 2000 loss 4.93e-01 pde 4.62e-01 | 293s
+  ep 3000 loss 4.77e-01 pde 4.39e-01 | 431s
+  ep 3999 loss 5.03e-01 pde 4.13e-01 | 570s
+  相对 L2 = 4.579e-01 | 耗时 570s | 论文报告 1.97e-3
+
+③ 反问题:2000 点 + 1% 噪声,反推 λ1、λ2(真值 1.0 与 0.0031831)
+  ep    0 loss 3.89e+01 pde 1.58e-03 λ1=0.8010 λ2=0.00100 | 2s
+  ep 1000 loss 2.57e-01 pde 5.54e-02 λ1=0.7814 λ2=0.00903 | 153s
+  ep 2000 loss 7.06e-02 pde 2.19e-02 λ1=0.9351 λ2=0.00564 | 298s
+  ep 3000 loss 3.78e-02 pde 1.39e-02 λ1=0.9524 λ2=0.00457 | 445s
+  ep 3999 loss 2.06e-02 pde 8.17e-03 λ1=0.9650 λ2=0.00408 | 591s
+/root/ai4s_papers/pinn/04_burgers.py:145: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  l1, l2 = float(par[0]), float(par[1])
+  反推 λ1 = 0.9650(真值 1.0,误差 3.50%)
+  反推 λ2 = 0.00408(真值 0.00318,误差 28.04%)
+  解相对 L2 = 1.764e-02 | 耗时 591s
+
+==========================================================
+正问题:本文 4.58e-01 vs 论文 1.97e-03
+反问题:λ1 误差 3.50%,λ2 误差 28.04%
+==========================================================
+DONE

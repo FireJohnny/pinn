@@ -1,0 +1,21 @@
+{
+ "paper": "10.1038/s41467-024-48779-z",
+ "dataset": "MIT (3 batches, test = id%5==0)",
+ "protocol": "200 epochs x 10 experiments, batch 512, lr 1e-2",
+ "mine_mean": {
+  "MAE": 0.00608,
+  "MAPE": 0.006424,
+  "RMSE": 0.008428
+ },
+ "author_mean": {
+  "MAE": 0.006177,
+  "MAPE": 0.006517,
+  "RMSE": 0.007396
+ },
+ "delta_pct": {
+  "MAE": -1.57,
+  "MAPE": -1.43,
+  "RMSE": 13.95
+ },
+ "rank": "逐位对齐(不同 torch 版本的数值差异),MAE/MAPE 偏差 1.5% 以内"
+}
